@@ -1,37 +1,48 @@
-
-from Add_employees import Employee
-from payroll import Payroll
+from employees import Employee
+from salary import Salary
 from attendance import Attendance
 from payslip import Payslip
 
 e = Employee()
-p = Payroll()
+s = Salary()
 a = Attendance()
-ps = Payslip()
+p = Payslip()
 
-print("1. Add Employee")
-print("2. View Employees")
-print("3. Delete Employee")
-print("4. Update Salary")
-print("5. Mark Attendance")
-print("6. Generate Payslip")
+print("1. Register")
+print("2. Login")
 
 choice = int(input("Enter choice: "))
 
 if choice == 1:
-    e.add_employee()
+    e.register()
 
 elif choice == 2:
-    e.view_employees()
+    emp_id = e.login()
 
-elif choice == 3:
-    e.delete_employee()
+    if emp_id:
+        while True:
+            print("\n--- Welcome to Employee Payroll System ---")
+            print("1. Add Employee")
+            print("2. View Employees")
+            print("3. Delete Employee")
+            print("4. Update Salary")
+            print("5. Mark Attendance")
+            print("6. Generate Payslip")
+            print("7. Exit")
 
-elif choice == 4:
-    p.update_salary()
+            choice = int(input("Enter choice: "))
 
-elif choice == 5:
-    a.mark_attendance()
-
-elif choice == 6:
-    ps.generate_payslip()
+            if choice == 1:
+                e.add_employee()
+            elif choice == 2:
+                e.view_employees()
+            elif choice == 3:
+                e.delete_employee()
+            elif choice == 4:
+                s.update_salary()
+            elif choice == 5:
+                a.mark_attendance()
+            elif choice == 6:
+                p.generate_payslip()
+            elif choice == 7:
+                break
